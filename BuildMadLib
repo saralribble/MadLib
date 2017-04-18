@@ -1,1 +1,63 @@
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+
+public class MadLibBuilder {
+	private MadLibTemplate madLibTemplate; 
+	private List<String> collectedWords;
+	//private int choice; 
+	
+	public MadLibBuilder() {
+		
+	}
+	
+	public void buildMadLib(int choice){
+		reset();
+		makeChoice(choice);
+		collectWords();
+		putTogetherWords();
+	}
+	
+	private void reset(){
+		//this.madLibTemplate = new madLibTemplate;
+		this.collectedWords = new ArrayList<String>();
+	}
+	private void makeChoice(int choice){
+		switch (choice)
+		{
+		case 1: 
+			madLibTemplate = ;
+			break;
+		case 2:
+			madLibTemplate = ;
+			break;
+		}
+		return;
+	}
+	private void collectWords(){
+		Scanner input = new Scanner(System.in);
+		String word;
+		List<String> wordPrompts = madLibTemplate.getWordPrompts();
+		for(String wordPrompt: wordPrompts){
+			System.out.print("Give me a " + wordPrompt + ": ");
+			word = input.nextLine();
+			collectedWords.add(word.toUpperCase());
+		}
+		
+		
+	}
+	private void putTogetherWords(){
+		List<String> storyPieces = madLibTemplate.getMadLibStoryPieces();
+		int size = storyPieces.size()-1;
+		for(int i = 0; i < size; i++)
+		{
+			String newPiece = storyPieces.get(i) + collectedWords.get(i);
+			System.out.print(newPiece);
+		}
+		
+		System.out.print(storyPieces.get(size));
+	}
+	
+}
